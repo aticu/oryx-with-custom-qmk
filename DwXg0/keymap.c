@@ -124,6 +124,19 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+    switch (other_keycode) {
+        case MO(1):
+        case MO(2):
+        case MO(3):
+            return true;
+    }
+    return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
